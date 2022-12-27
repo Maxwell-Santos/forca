@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Forca</title>
+</head>
+
+<body>
+  <main>
+    <div class="topo">
+      <h1>Forca</h1>
+
+      <div class="containerChances">
+        <span>chances:</span>
+        <span id="numChances"></span>
+      </div>
+
+    </div>
+
+    <div class="containerletrasTestadas">
+      <span>Letras testadas:</span>
+      <span id="letrasTestadas"></span>
+
+      <div id="containerPalavrasChutadas">
+        <span>Palavras chutadas:</span>
+        <div>
+          <!-- Palavras chutadas-->
+        </div>
+      </div>
+    </div>
+
+    <div class="chuteContainer">
+      <input type="text" id="chutePalavra" onchange="ativarBtnChute()" autocomplete="off" disabled>
+      <button class="btnChutar" onclick="chutarPalavra(document.querySelector('#chutePalavra').value)"
+        disabled>Chutar</button>
+    </div>
+
+    <div class="containerForca">
+      <div id="word" class="containerWord">
+        <!-- Aqui vai ficar a palavra sorteada-->
+      </div>
+
+      <div class="containerChutarLetra">
+        <button onclick="existeLetra(document.getElementById('lala').value)" style="--bg:#61876E" class="existe">
+          Tem?
+        </button>
+        <input type="text" name="letra" id="lala" maxlength="1" autocomplete="off">
+      </div>
+
+    </div>
+
+    <div class="botoes">
+      <button type="submit" id="gerador" onclick="gerarPalavra()" style="--bg:#3C6255">Gerar Palavra</button>
+
+      <button onclick="resetar()" class="resetar" style="--bg:#f00">Resetar palavra</button>
+    </div>
+
+    <h3 style="display: inline;">Acertos:</h3>
+    <div id="acertos">
+    </div>
+
+  </main>
+
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>
