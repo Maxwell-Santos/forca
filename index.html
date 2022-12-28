@@ -14,22 +14,29 @@
 
 <body>
   <main>
-    <div class="topo">
+    <header class="topo">
       <h1>Forca</h1>
 
       <div class="containerChances">
-        <span>chances:</span>
+        <span>&#10084;</span>
         <span id="numChances"></span>
       </div>
 
-    </div>
+    </header>
 
     <div class="containerletrasTestadas">
-      <span>Letras testadas:</span>
-      <span id="letrasTestadas"></span>
+      <div class="containerDica">
+        <button onclick="mostrarDica(this)">Me dê uma dica</button>
+        <span id="dica" class="dica">objetos de casa</span>
+      </div>
 
-      <div id="containerPalavrasChutadas">
-        <span>Palavras chutadas:</span>
+      <div class="d">
+        <span class="title">Letras testadas:</span>
+        <span id="letrasTestadas"></span>
+      </div>
+
+      <div class="d" id="containerPalavrasChutadas">
+        <span class="title">Palavras chutadas:</span>
         <div>
           <!-- Palavras chutadas-->
         </div>
@@ -37,29 +44,32 @@
     </div>
 
     <div class="chuteContainer">
-      <input type="text" id="chutePalavra" onchange="ativarBtnChute()" autocomplete="off" disabled>
-      <button class="btnChutar" onclick="chutarPalavra(document.querySelector('#chutePalavra').value)"
-        disabled>Chutar</button>
+      <div class="conatinerInput">
+        <label for="chutePalavra">Qual é a palavra?</label>
+        <input type="text" id="chutePalavra" onblur="ativarBtnChute()" autocomplete="off" placeholder="ex: sabonete" disabled>
+      </div>
+
+      <button class="btnChutar" onclick="chutarPalavra(document.querySelector('#chutePalavra').value)">Chutar</button>
     </div>
 
     <div class="containerForca">
-      <div id="word" class="containerWord">
+      <div id="forca" class="forca">
         <!-- Aqui vai ficar a palavra sorteada-->
       </div>
 
       <div class="containerChutarLetra">
-        <button onclick="existeLetra(document.getElementById('lala').value)" style="--bg:#61876E" class="existe">
-          Tem?
-        </button>
-        <input type="text" name="letra" id="lala" maxlength="1" autocomplete="off">
+          <button onclick="existeLetra(document.getElementById('letraChutada').value)" style="--bg:#3C6255" class="existe">
+            Tem?
+          </button>
+          <input type="text" name="letra" id="letraChutada" maxlength="1" autocomplete="off">
       </div>
 
     </div>
 
     <div class="botoes">
-      <button type="submit" id="gerador" onclick="gerarPalavra()" style="--bg:#3C6255">Gerar Palavra</button>
+      <button type="submit" id="gerador" style="--bg:#3C6255">Gerar Palavra</button>
 
-      <button onclick="resetar()" class="resetar" style="--bg:#f00">Resetar palavra</button>
+      <button onclick="resetar()" class="resetar" style="--bg:rgb(211, 30, 30)">Resetar o jogo</button>
     </div>
 
     <h3 style="display: inline;">Acertos:</h3>

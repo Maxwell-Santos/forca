@@ -26,7 +26,7 @@ main {
   width: 100%;
   position: relative;
   padding: 30px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   background-color: rgba(255, 255, 255, 0.527);
 }
@@ -40,57 +40,6 @@ h3 {
   font-size: 1.7em;
   color: #3C6255;
 }
-.topo{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.containerChances{
-  background: #0d49349c;
-  color: white;
-  padding: 5px 15px;
-  border-radius: 20px;
-}
-#lala {
-  width: 50px;
-  height: 45px;
-  text-align: center;
-  border: 1px solid rgb(197, 197, 197);
-  font-size: 1.3em;
-}
-
-.containerWord {
-  padding: 10px;
-  border: 1px solid rgb(197, 197, 197);
-  border-radius: 7px;
-  margin: 20px 0px;
-  text-align: center;
-  flex: 1;
-  text-transform: uppercase;
-}
-
-.containerletrasTestadas {
-  margin: 10px 0px;
-}
-
-#letrasTestadas {
-  text-transform: uppercase;
-}
-
-.existe {
-  padding: 7px 15px;
-  height: 45px;
-  text-align: center;
-}
-
-.containerForca {
-  display: flex;
-  align-items: center;
-  column-gap: 20px;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
-  margin-top: 40px;
-}
 
 button {
   appearance: none;
@@ -102,6 +51,155 @@ button {
   color: rgb(240, 240, 240);
 }
 
+/* TÍTULO, CHANCES */
+.topo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 0px 20px; */
+}
+.containerChances{
+  color: #e71e1edc;
+  font-size: 1.3em;
+}
+/* TÍTULO, CHANCES */
+
+/* DICA, BOTÃO DE DICA; LETRAS TESTADAS; PALAVRAS TESTADAS */
+.containerDica button{
+  background-color: #1c946a;
+  padding: 5px 10px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  transition: all ease .3s;
+}
+.containerDica button:hover{
+  background-color: #137a56;
+}
+.containerDica button:disabled{
+  /* background-color: #1f684e6b; */
+  pointer-events: none;
+}
+
+.containerDica .dica{
+  opacity: 0;
+  transition: all ease .3s;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 15px;
+  text-transform: capitalize;
+  font-size: .9em;
+}
+.containerDica .active{
+  opacity: 1;
+}
+
+.containerletrasTestadas {
+  padding-bottom: 30px;
+}
+.containerletrasTestadas .d .title{
+  color: #0d4934;
+  font-size: 1em;
+  text-transform: capitalize;
+}
+
+.containerletrasTestadas .d div{
+  display: inline;
+}
+
+#letrasTestadas {
+  text-transform: uppercase;
+}
+/* DICA, BOTÃO DE DICA; LETRAS TESTADAS; PALAVRAS TESTADAS */
+
+/* INPUT CHUTE PALAVRA; BOTÃO CHUTAR */
+.chuteContainer {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.conatinerInput{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#chutePalavra {
+  /* flex: 1; */
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 5px;
+  padding: 10px;
+  min-width: 209px;
+}
+
+#chutePalavra:disabled {
+  background-color: #d1d1d1d0;
+}
+
+.btnChutar {
+  align-self: flex-end;
+  background-color: #3C6255;
+  height: 42px;
+}
+/* INPUT CHUTE PALAVRA; BOTÃO CHUTAR */
+
+/* OUTPUT FORCA */
+.containerForca {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.forca {
+  padding: 9px;
+  border: 1px solid rgb(197, 197, 197);
+  border-radius: 7px;
+  margin: 20px 0px;
+  text-align: center;
+  flex: 1;
+  text-transform: uppercase;
+}
+/* OUTPUT FORCA */
+
+/* CHUTE LETRA; BOTÃO CHUTE LETRA */
+.containerChutarLetra {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0px;
+  height: 42px;
+}
+
+#letraChutada {
+  width: 50px;
+  height: 100%;
+  text-align: center;
+  border: 1px solid rgb(197, 197, 197);
+  font-size: 1.3em;
+}
+
+.existe {
+  height: 100%;
+  padding: 7px 15px;
+  text-align: center;
+}
+/* CHUTE LETRA; BOTÃO CHUTE LETRA */
+
+
+/* BOTÃO RESETAR; BOTÃO GERAR NOVA PALAVRA */
+.botoes {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
 .resetar {
   border: 1px solid var(--bg);
   background: transparent;
@@ -110,16 +208,8 @@ button {
 }
 
 .resetar:hover {
-  background-color: rgb(156, 31, 31);
+  background-color: var(--bg);
   color: white;
-}
-
-.botoes {
-  display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
-  gap: 15px;
-  margin-bottom: 15px;
 }
 
 #gerador {
@@ -138,41 +228,11 @@ button {
 #gerador:disabled,
 .btnChutar:disabled {
   background-color: #1f684e6b;
-  /* pointer-events: none; */
   cursor: not-allowed;
 }
+/* BOTÃO RESETAR; BOTÃO GERAR NOVA PALAVRA */
 
-.containerChutarLetra {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 10px 0px;
-}
-
-.chuteContainer {
-  display: flex;
-  width: 100%;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-#chutePalavra {
-  flex: 1;
-  border: 1px solid rgb(197, 197, 197);
-  border-radius: 5px;
-  padding: 10px;
-  min-width: 209px;
-}
-
-#chutePalavra:disabled {
-  background-color: #d1d1d1d0;
-}
-
-.btnChutar {
-  background-color: #3C6255;
-  padding: 7px 15px;
-}
-
+/* OUTPUT ACERTOS PALAVRAS ACERTADAS*/
 #acertos{
   width: 100%;
   display: inline-block;
@@ -183,6 +243,7 @@ button {
   font-size: 1.2em;
   text-transform: uppercase;
 }
+/* OUTPUT ACERTOS PALAVRAS ACERTADAS*/
 
 @media (max-width: 390px) {
   main {
@@ -197,7 +258,7 @@ button {
     margin-bottom: 30px;
   }
 
-  .containerWord {
+  .forca {
     flex: 1;
     width: 100%;
     margin: 0;
