@@ -19,6 +19,7 @@ body {
   align-items: center;
   flex-direction: column;
   background-color: #FCFFE7;
+  /* background-color: #163d0f; */
 }
 
 main {
@@ -28,7 +29,8 @@ main {
   padding: 30px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.527);
+  /* background-color: rgba(255, 255, 255, 0.527); */
+  background-color: rgba(255, 255, 255);
 }
 
 h1 {
@@ -51,36 +53,49 @@ button {
   color: rgb(240, 240, 240);
 }
 
-/* TÍTULO, CHANCES */
-.topo{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* padding: 0px 20px; */
+img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
 }
-.containerChances{
+
+/* TÍTULO, CHANCES */
+.topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.containerChances {
   color: #e71e1edc;
   font-size: 1.3em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
+
 /* TÍTULO, CHANCES */
 
 /* DICA, BOTÃO DE DICA; LETRAS TESTADAS; PALAVRAS TESTADAS */
-.containerDica button{
+.containerDica button {
   background-color: #1c946a;
   padding: 5px 10px;
   letter-spacing: 1px;
   margin-bottom: 20px;
   transition: all ease .3s;
 }
-.containerDica button:hover{
+
+.containerDica button:hover {
   background-color: #137a56;
 }
-.containerDica button:disabled{
+
+.containerDica button:disabled {
   /* background-color: #1f684e6b; */
   pointer-events: none;
 }
 
-.containerDica .dica{
+.containerDica .dica {
   opacity: 0;
   transition: all ease .3s;
   letter-spacing: 1px;
@@ -89,26 +104,29 @@ button {
   text-transform: capitalize;
   font-size: .9em;
 }
-.containerDica .active{
+
+.containerDica .active {
   opacity: 1;
 }
 
 .containerletrasTestadas {
   padding-bottom: 30px;
 }
-.containerletrasTestadas .d .title{
+
+.containerletrasTestadas .d .title {
   color: #0d4934;
   font-size: 1em;
   text-transform: capitalize;
 }
 
-.containerletrasTestadas .d div{
+.containerletrasTestadas .d div {
   display: inline;
 }
 
 #letrasTestadas {
   text-transform: uppercase;
 }
+
 /* DICA, BOTÃO DE DICA; LETRAS TESTADAS; PALAVRAS TESTADAS */
 
 /* INPUT CHUTE PALAVRA; BOTÃO CHUTAR */
@@ -116,10 +134,10 @@ button {
   display: flex;
   width: 100%;
   gap: 15px;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
-.conatinerInput{
+.conatinerInput {
   display: flex;
   flex: 1;
   flex-direction: column;
@@ -143,6 +161,7 @@ button {
   background-color: #3C6255;
   height: 42px;
 }
+
 /* INPUT CHUTE PALAVRA; BOTÃO CHUTAR */
 
 /* OUTPUT FORCA */
@@ -164,6 +183,7 @@ button {
   flex: 1;
   text-transform: uppercase;
 }
+
 /* OUTPUT FORCA */
 
 /* CHUTE LETRA; BOTÃO CHUTE LETRA */
@@ -188,6 +208,7 @@ button {
   padding: 7px 15px;
   text-align: center;
 }
+
 /* CHUTE LETRA; BOTÃO CHUTE LETRA */
 
 
@@ -221,6 +242,7 @@ button {
   background-color: #0d4934;
   border-radius: 40px;
 }
+
 #gerador:hover:disabled {
   border-radius: 5px;
 }
@@ -230,27 +252,52 @@ button {
   background-color: #1f684e6b;
   cursor: not-allowed;
 }
+
 /* BOTÃO RESETAR; BOTÃO GERAR NOVA PALAVRA */
 
 /* OUTPUT ACERTOS PALAVRAS ACERTADAS*/
-#acertos{
+#acertos {
   width: 100%;
   display: inline-block;
 }
-#acertos .palavrasCertas{
+
+#acertos .palavrasCertas {
   color: #3C6255;
   font-weight: 700;
   font-size: 1.2em;
   text-transform: uppercase;
 }
+
 /* OUTPUT ACERTOS PALAVRAS ACERTADAS*/
 
-@media (max-width: 390px) {
+@media (max-width: 425px) {
   main {
     padding: 18px;
   }
+
+  .topo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .topo .containerChances {
+    align-items: flex-start;
+    margin: 10px 0px;
+  }
+
+  .topo .containerChances img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+  }
+
+  .chuteContainer {
+    flex-direction: column;
+  }
+
   .btnChutar {
     flex: 1;
+    align-self: stretch;
   }
 
   .containerForca {
@@ -265,9 +312,10 @@ button {
     margin-bottom: 5px;
   }
 
-  .containerChutarLetra{
+  .containerChutarLetra {
     width: 100%;
   }
+
   .containerChutarLetra .existe {
     flex: 1;
   }
