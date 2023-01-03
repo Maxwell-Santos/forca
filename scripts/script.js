@@ -46,9 +46,8 @@ window.addEventListener('load', () => {
   containerPalavrasChutadas.innerHTML = palavrasChutadas
 })
 
-geradorbtn.addEventListener('click', () => {
+gerador.addEventListener('click', () => {
   gerarPalavra()
-  a.play()
 })
 
 //se max tiver nada: 16
@@ -87,7 +86,6 @@ function mostrarDica(elementoBotaoDica) {
     elementoBotaoDica.disabled = true
     elementoBotaoDica.textContent = 'A dica é:'
   }
-
 }
 
 function listarVidas(tipoVida, quantidade, ignorarPrimeiroLoad) {
@@ -119,13 +117,15 @@ function listarVidas(tipoVida, quantidade, ignorarPrimeiroLoad) {
 function existeLetra(letraDeFora) {
   const letrasNoHTML = document.querySelectorAll('#forca #letra')
   let letrasNoHTMLEmArray = Array.from(letrasNoHTML)
+  
+  letraDeFora.trim()
 
   if (!palavraEscolhida) {
     audioErro.play()
     return alert("gere uma palavra primeiro")
 
   }
-  if (!letraDeFora) {
+  if (!letraDeFora || letraDeFora == ' ') {
     audioErro.play()
     input.focus()
     return alert("Chute uma letra!")
@@ -173,6 +173,7 @@ function chutarPalavra(chuteDaPalavraEscolhida) {
   const estaVazio = chuteDaPalavraEscolhida === '' ? true : false
 
   if (!estaVazio) {
+    chuteDaPalavraEscolhida.trim()
     if (chuteDaPalavraEscolhida.toLowerCase() == palavraEscolhida) {
       forca.textContent = palavraEscolhida
 
@@ -309,7 +310,6 @@ function restaurar(mensagem) {
     }
   }
 }
-
 
 const audioGanharVida = new Audio('../efeitos/win.wav')
 const audioPerderVida = new Audio('../efeitos/lose.wav')

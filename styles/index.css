@@ -98,7 +98,7 @@ img {
   opacity: 0;
   transition: all ease .3s;
   letter-spacing: 1px;
-  padding: 3px 10px;
+  /* padding: 3px 10px; */
   border-radius: 15px;
   text-transform: capitalize;
   font-size: .9em;
@@ -326,12 +326,19 @@ img {
   }
 
   .chuteContainer {
-    flex-direction: column;
+    /* flex-direction: column; */
+    align-items: flex-start;
+  }
+  .chuteContainer #chutePalavra{
+    border: none;
+    border-bottom: 1px solid rgb(197, 197, 197);
+    border-radius: 0;
+
   }
 
   .btnChutar {
-    flex: 1;
-    align-self: stretch;
+    flex: .5;
+    /* align-self: stretch; */
   }
 
   .containerForca {
@@ -352,5 +359,9 @@ img {
 
   .containerChutarLetra .existe {
     flex: 1;
+  }
+
+  .botoes{
+    flex-direction: column;
   }
 }
