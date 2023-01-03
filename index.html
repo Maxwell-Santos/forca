@@ -13,7 +13,12 @@
   <title>Forca</title>
 </head>
 
-<body>
+<body onload="document.querySelector('.containerCarregar').classList.add('parou')">
+
+  <div class="containerCarregar">
+    <div class="carregar"></div>
+  </div>
+  
   <main>
     <header class="topo">
       <h1>Forca</h1>
@@ -85,6 +90,11 @@
     </div>
 
   </main>
+  <footer
+   style="margin-top: 10px; text-align: center; font-size: .8em;"
+   >
+     &copy; <a href="http://maxwellads.vercel.app" style="text-decoration: none; color: black;">Maxwell Alves dos Santos 2022</a>  
+   </footer>
 
   <div id="animacao" class="animacao"></div>
 

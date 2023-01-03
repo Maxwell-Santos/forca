@@ -43,9 +43,7 @@ window.addEventListener('load', () => {
   listarVidas('letra', chancesLetrasErradas, true)
 
   geradorbtn.focus()
-  // containerChances.innerHTML = chances
   containerPalavrasChutadas.innerHTML = palavrasChutadas
-  // btnChutar.disabled = true
 
 })
 
@@ -244,7 +242,7 @@ function mensagemDeSucesso() {
     ganhouUmaVidaDeLetra()
     palavrasChutadas = []
     containerPalavrasChutadas.innerHTML = ''
-    
+
     letrasTestadas = []
     containerLetrasTestadas.textContent = ''
     chutePalavra.value = ''

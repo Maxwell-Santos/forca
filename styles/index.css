@@ -29,7 +29,6 @@ main {
   padding: 30px;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  /* background-color: rgba(255, 255, 255, 0.527); */
   background-color: rgba(255, 255, 255);
 }
 
@@ -145,7 +144,6 @@ img {
 }
 
 #chutePalavra {
-  /* flex: 1; */
   border: 1px solid rgb(197, 197, 197);
   border-radius: 5px;
   padding: 10px;
@@ -268,6 +266,42 @@ img {
   text-transform: uppercase;
 }
 
+.containerCarregar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  z-index: 999;
+  opacity: 1;
+  transition: all ease 1s;
+}
+.carregar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: 10px solid #3c6255b2;
+  border-top: 10px solid #fff;
+  animation: carregar .6s infinite linear;
+}
+
+.parou {
+  /* display: none; */
+  opacity: 0;
+  z-index: -1;
+}
+
+@keyframes carregar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* OUTPUT ACERTOS PALAVRAS ACERTADAS*/
 
 @media (max-width: 425px) {
@@ -319,5 +353,4 @@ img {
   .containerChutarLetra .existe {
     flex: 1;
   }
-
 }
