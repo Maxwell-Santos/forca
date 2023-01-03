@@ -17,10 +17,8 @@ const containerAcertos = document.querySelector('#acertos')
 const containerVidasLetras = document.querySelector('#vidasLetras')
 const containerVidasPalavras = document.querySelector('#vidasPalavras')
 
-
-const palavras = ['casa', 'cama', 'roupa', 'cobertor', 'travesseiro', 'cadeira', 'mesa', 'pia', 'ventilador',
-  'laje', 'janela', 'banheiro', 'box', 'privada', 'chuveiro', 'cabeceira', 'torneira', 'escorredor', 'gaveta',
-  'prato', 'garfo', 'copo', 'colher', 'faca']
+const palavras = ['cama', 'cobertor', 'travesseiro', 'cadeira', 'mesa', 'pia', 'ventilador',
+  'laje', 'janela', 'banheiro', 'box', 'privada', 'chuveiro', 'torneira', 'gaveta', 'porta']
 
 let chancesPalavrasErradas = 4
 let chancesLetrasErradas = 6
@@ -29,7 +27,7 @@ let arrayDeVidasLetras = []
 
 let palavrasAcertadas = []
 
-let contadorPalavrasParaJogar = 24
+let contadorPalavrasParaJogar = 16
 let numAleatorio = 0
 let palavraEscolhida = ''
 let arrayDaPalavra = []
@@ -38,20 +36,22 @@ let palavraMudando = []
 let letrasTestadas = []
 let palavrasChutadas = []
 
+const audioErro = new Audio('../efeitos/wrong.wav')
+
 window.addEventListener('load', () => {
   listarVidas('palavra', chancesPalavrasErradas, true)
   listarVidas('letra', chancesLetrasErradas, true)
 
   geradorbtn.focus()
   containerPalavrasChutadas.innerHTML = palavrasChutadas
-
 })
 
-gerador.addEventListener('click', () => {
+geradorbtn.addEventListener('click', () => {
   gerarPalavra()
+  a.play()
 })
 
-//se max tiver nada: 24
+//se max tiver nada: 16
 //se array tiver nada: o array principal 'palavras'
 function gerarPalavra(max = contadorPalavrasParaJogar, array = palavras) {
   const MINIMO = Math.ceil(0)
@@ -74,6 +74,12 @@ function gerarPalavra(max = contadorPalavrasParaJogar, array = palavras) {
 }
 
 function mostrarDica(elementoBotaoDica) {
+  if(!palavraEscolhida){
+    alert('gere uma palavra primeiro')
+    geradorbtn.focus()
+    return
+  }
+
   const confirmar = confirm("Você só tem uma dica")
 
   if (confirmar) {
@@ -115,10 +121,12 @@ function existeLetra(letraDeFora) {
   let letrasNoHTMLEmArray = Array.from(letrasNoHTML)
 
   if (!palavraEscolhida) {
+    audioErro.play()
     return alert("gere uma palavra primeiro")
 
   }
   if (!letraDeFora) {
+    audioErro.play()
     input.focus()
     return alert("Chute uma letra!")
   }
@@ -141,7 +149,8 @@ function existeLetra(letraDeFora) {
 
     letrasTestadas.push(input.value)
     //letra requisitada que não existe na palavra, ela será mostrada na lista de letras testadas
-    perderVida()
+
+    perderVida() //perder vida de letra
 
     if (chancesPalavrasErradas == 0) {
       alert("Acabaram suas chances de chute da palavra")
@@ -199,6 +208,7 @@ function chutarPalavra(chuteDaPalavraEscolhida) {
     containerPalavrasChutadas.appendChild(span)
 
   } else {
+    audioErro.play()
     alert('Você não chutou nenhuma palavra!')
     chutePalavra.focus()
   }
@@ -300,6 +310,10 @@ function restaurar(mensagem) {
   }
 }
 
+
+const audioGanharVida = new Audio('../efeitos/win.wav')
+const audioPerderVida = new Audio('../efeitos/lose.wav')
+
 // animações
 const animacao = document.querySelector('#animacao')
 
@@ -307,6 +321,7 @@ const perdeuUmaVidaDePalavra = () => {
   animacao.classList.remove('positivo')
 
   animacao.classList.add('active')
+  audioPerderVida.play()
   animacao.innerHTML = '<span>-1</span> <img src="assets/lightning.png" alt="vidas palavras">'
 
   setTimeout(() => {
@@ -317,6 +332,7 @@ const perdeuUmaVidaDePalavra = () => {
 const ganhouUmaVidaDePalavra = () => {
   animacao.classList.add('positivo')
   animacao.classList.add('active')
+  audioGanharVida.play()
   animacao.innerHTML = '<span>+1</span> <img src="assets/lightning.png" alt="vidas palavras">'
 
   setTimeout(() => {
@@ -325,11 +341,11 @@ const ganhouUmaVidaDePalavra = () => {
 }
 
 
-
 const perdeuUmaVidaDeLetra = () => {
   animacao.classList.remove('positivo')
 
   animacao.classList.add('active')
+  audioPerderVida.play()
   animacao.innerHTML = '<span>-1</span> <img src="assets/heart.svg" alt="vidas palavras">'
   
   setTimeout(() => {
@@ -340,6 +356,7 @@ const perdeuUmaVidaDeLetra = () => {
 const ganhouUmaVidaDeLetra = () => {
   animacao.classList.add('positivo')
   animacao.classList.add('active')
+  audioGanharVida.play()
   animacao.innerHTML = '<span>+1</span> <img src="assets/heart.svg" alt="vidas palavras">'
   
   setTimeout(() => {
