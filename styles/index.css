@@ -132,8 +132,8 @@ img {
 .chuteContainer {
   display: flex;
   width: 100%;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 15px;
+  /* flex-wrap: wrap; */
 }
 
 .conatinerInput {
@@ -147,6 +147,7 @@ img {
   border: 1px solid rgb(197, 197, 197);
   border-radius: 5px;
   padding: 10px;
+  min-width: 209px;
 }
 
 #chutePalavra:disabled {
@@ -332,8 +333,7 @@ img {
     border: none;
     border-bottom: 1px solid rgb(197, 197, 197);
     border-radius: 0;
-    flex: 1;
-    max-width: 462px;
+
   }
 
   .btnChutar {
